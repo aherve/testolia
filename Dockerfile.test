@@ -1,0 +1,7 @@
+FROM golang:stretch
+
+RUN mkdir /app
+RUN mkdir /app/datatest
+WORKDIR /app
+
+ADD . /app
