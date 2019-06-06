@@ -4,37 +4,7 @@ import (
 	"testing"
 )
 
-func TestFirstIndex(t *testing.T) {
-	data := []parsed{
-		{timestamp: "2015-08-01 00:03:46", search: "1"},
-		{timestamp: "2016-08-01 00:03:48", search: "1"},
-		{timestamp: "2016-08-01 01:03:48", search: "1"},
-		{timestamp: "2018-08-01 00:03:49", search: "1"},
-	}
-
-	if r := firstIndex("2015", data); r != 0 {
-		t.Error("expected firstIndex to equal 0, got ", r)
-	}
-	if r := firstIndex("2016-08-01", data); r != 1 {
-		t.Error("expected firstIndex to equal 1, got ", r)
-	}
-	if r := firstIndex("2016-08-01 01:", data); r != 2 {
-		t.Error("expected firstIndex to equal 2, got ", r)
-	}
-	if r := firstIndex("2018", data); r != 3 {
-		t.Error("expected firstIndex to equal 3, got ", r)
-	}
-	if r := firstIndex("2019", data); r != -1 {
-		t.Error("expected firstIndex to equal -1, got ", r)
-	}
-	if r := firstIndex("2018-08-01 00:03:49-wait-wat-please-stop", data); r != -1 {
-		t.Error("expected firstIndex to equal -1, got ", r)
-	}
-	if r := firstIndex("2018", []parsed{}); r != -1 {
-		t.Error("expected firstIndex to equal -1, got ", r)
-	}
-}
-
+// Read an actual test file
 func TestReadAndSort(t *testing.T) {
 	res := readAndSort("datatest/test.tsv")
 

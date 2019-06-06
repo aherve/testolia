@@ -63,9 +63,9 @@ func handlePopular(data []parsed) func(http.ResponseWriter, *http.Request) {
 
 // We choose to default to "" (i.e. all) if no proper query is found
 func getQuery(r *http.Request) string {
-	splitted := strings.Split(r.URL.Path, "/")
-	if len(splitted) >= 5 {
-		return splitted[4]
+	split := strings.Split(r.URL.Path, "/")
+	if len(split) >= 5 {
+		return split[4]
 	} else {
 		return ""
 	}

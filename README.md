@@ -11,9 +11,10 @@ Testolia: a query log parser server
 4. [Initial assignment](#initialAssignement)
 
 ## About
-This go program creates a server that allows to print a report of a log file on demand. It can either count the distinct request during a timeframe, or print a object listing the popular searches during a timeframe:
+This go program creates a server that allows to print a report of a log file on demand. It can either count the distinct request during a timeframe, or print an object listing the popular searches during a timeframe:
 
 ![count](./assets/count.png)
+
 ![popular](./assets/popular.png)
 
 ### What's inside
@@ -22,10 +23,10 @@ The program is written in go, with no external lib used.
 
 ### How it works
  
-1. The file is read, every line is splitted in two strings `timestamp` and `query`.
+1. The file is read, every line is split in two strings `timestamp` and `query`.
 2. The data is stored in a slice, that we sort against the timestamp key. The timestamps are properly formatted, so sorting alphabetically yields a proper sort by timestamp
 3. At this point the server can start listening to queries
-4. When receiving a request, find the first maching index of the sorted data (using a binary sort, thus `O(log(n))`), scan every line that matches the query (simple scan until the matching condition fails) and reduce to provide the desired output.
+4. When receiving a request, find the first matching index of the sorted data (using a binary sort, thus `O(log(n))`), scan every line that matches the query (simple scan until the matching condition fails) and reduce to provide the desired output.
 
 ## Installation & usage
 
