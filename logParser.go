@@ -14,7 +14,7 @@ import (
 // ISO dates provided => string sort is equivalent to a date sort
 type parsed struct {
 	timestamp string
-	search    string
+	query     string
 }
 
 type byTimestamp []parsed

@@ -6,18 +6,18 @@ import (
 
 func TestPopular(t *testing.T) {
 	data := []parsed{
-		{timestamp: "2016", search: "a"},
-		{timestamp: "2016", search: "b"},
-		{timestamp: "2016", search: "c"},
-		{timestamp: "2016", search: "a"},
-		{timestamp: "2016", search: "b"},
-		{timestamp: "2016", search: "d"},
-		{timestamp: "2016", search: "a"},
-		{timestamp: "2018", search: "e"},
-		{timestamp: "2018", search: "e"},
-		{timestamp: "2018", search: "e"},
-		{timestamp: "2018", search: "e"},
-		{timestamp: "2018", search: "e"},
+		{timestamp: "2016", query: "a"},
+		{timestamp: "2016", query: "b"},
+		{timestamp: "2016", query: "c"},
+		{timestamp: "2016", query: "a"},
+		{timestamp: "2016", query: "b"},
+		{timestamp: "2016", query: "d"},
+		{timestamp: "2016", query: "a"},
+		{timestamp: "2018", query: "e"},
+		{timestamp: "2018", query: "e"},
+		{timestamp: "2018", query: "e"},
+		{timestamp: "2018", query: "e"},
+		{timestamp: "2018", query: "e"},
 	}
 
 	// find 0 value
@@ -90,10 +90,10 @@ func TestPopular(t *testing.T) {
 
 func TestDistinct(t *testing.T) {
 	data := []parsed{
-		{timestamp: "2015-08-01 00:03:46", search: "a"},
-		{timestamp: "2016-08-01 00:03:48", search: "b"},
-		{timestamp: "2016-08-01 01:03:48", search: "a"},
-		{timestamp: "2018-08-01 00:03:49", search: "c"},
+		{timestamp: "2015-08-01 00:03:46", query: "a"},
+		{timestamp: "2016-08-01 00:03:48", query: "b"},
+		{timestamp: "2016-08-01 01:03:48", query: "a"},
+		{timestamp: "2018-08-01 00:03:49", query: "c"},
 	}
 
 	if r := distinct("20", data); r != 3 {
@@ -116,10 +116,10 @@ func TestDistinct(t *testing.T) {
 
 func TestFirstIndex(t *testing.T) {
 	data := []parsed{
-		{timestamp: "2015-08-01 00:03:46", search: "1"},
-		{timestamp: "2016-08-01 00:03:48", search: "1"},
-		{timestamp: "2016-08-01 01:03:48", search: "1"},
-		{timestamp: "2018-08-01 00:03:49", search: "1"},
+		{timestamp: "2015-08-01 00:03:46", query: "1"},
+		{timestamp: "2016-08-01 00:03:48", query: "1"},
+		{timestamp: "2016-08-01 01:03:48", query: "1"},
+		{timestamp: "2018-08-01 00:03:49", query: "1"},
 	}
 
 	if r := firstIndex("2015", data); r != 0 {

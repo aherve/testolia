@@ -12,11 +12,11 @@ func TestReadAndSort(t *testing.T) {
 		t.Error("expected test.tsv to yield 4 values")
 	}
 
-	if r := res[0].search; r != "first" {
+	if r := res[0].query; r != "first" {
 		t.Error("expected first key to eql 'first' but got ", r)
 	}
 
-	if r := res[3].search; r != "bar" {
+	if r := res[3].query; r != "bar" {
 		t.Error("expected first key to eql 'bar' but got ", r)
 	}
 
@@ -29,7 +29,7 @@ func TestParse(t *testing.T) {
 	if err != nil {
 		t.Error("expected", err, " to be nil")
 	}
-	if r := parsed.search; r != "nixos" {
+	if r := parsed.query; r != "nixos" {
 		t.Error("expected parse to yield query = nixos, got ", r)
 	}
 	if r := parsed.timestamp; r != "2015-08-01 00:03:46" {

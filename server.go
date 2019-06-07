@@ -16,11 +16,11 @@ type distinctHttpResp struct {
 func handleDistinct(data []parsed) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		defer log.Println(r.Method, r.URL) // basic logging
-		// get query
-		query := getQuery(r)
+		// get filter
+		filter := getFilter(r)
 
 		// get results
-		distinct := distinct(query, data)
+		distinct := distinct(filter, data)
 
 		// format & send
 		js, err := json.Marshal(distinctHttpResp{distinct})
@@ -44,11 +44,11 @@ func handlePopular(data []parsed) func(http.ResponseWriter, *http.Request) {
 			http.Error(w, err.Error(), 400)
 		}
 
-		// get query
-		query := getQuery(r)
+		// get filter
+		filter := getFilter(r)
 
 		// get data
-		popular := popular(size, query, data)
+		popular := popular(size, filter, data)
 
 		// format and send
 		js, err := json.Marshal(popular)
@@ -61,8 +61,8 @@ func handlePopular(data []parsed) func(http.ResponseWriter, *http.Request) {
 	}
 }
 
-// We choose to default to "" (i.e. all) if no proper query is found
-func getQuery(r *http.Request) string {
+// We choose to default to "" (i.e. all) if no proper filter is found
+func getFilter(r *http.Request) string {
 	split := strings.Split(r.URL.Path, "/")
 	if len(split) >= 5 {
 		return split[4]
