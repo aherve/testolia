@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-type distinctHttpResp struct {
+type distinctHTTPResp struct {
 	Count int
 }
 
@@ -23,7 +23,7 @@ func handleDistinct(data []parsed) func(http.ResponseWriter, *http.Request) {
 		distinct := distinct(filter, data)
 
 		// format & send
-		js, err := json.Marshal(distinctHttpResp{distinct})
+		js, err := json.Marshal(distinctHTTPResp{distinct})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -66,9 +66,8 @@ func getFilter(r *http.Request) string {
 	split := strings.Split(r.URL.Path, "/")
 	if len(split) >= 5 {
 		return split[4]
-	} else {
-		return ""
 	}
+	return ""
 }
 
 // find size or error
@@ -76,7 +75,6 @@ func getSize(r *http.Request) (int, error) {
 	if s, ok := r.URL.Query()["size"]; ok && len(s) == 1 {
 		size, err := strconv.Atoi(s[0])
 		return size, err
-	} else {
-		return -1, errors.New("missing size parameter")
 	}
+	return -1, errors.New("missing size parameter")
 }

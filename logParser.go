@@ -27,11 +27,10 @@ func (a byTimestamp) Less(i, j int) bool { return a[i].timestamp < a[j].timestam
 func parse(line string) (parsed, error) {
 	split := strings.Split(line, "\t")
 
-	if len(split) == 2 {
-		return parsed{split[0], split[1]}, nil
-	} else {
+	if len(split) != 2 {
 		return parsed{}, errors.New("could not parse line")
 	}
+	return parsed{split[0], split[1]}, nil
 
 }
 

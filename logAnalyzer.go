@@ -85,9 +85,8 @@ func firstIndex(filter string, data []parsed) int {
 	// it's up to the caller to check wether `sort.Search` actually found an element
 	if i < len(data) && matchFilter(data[i].timestamp, filter) {
 		return i
-	} else {
-		return -1
 	}
+	return -1
 }
 
 func matchFilter(ts, filter string) bool {
